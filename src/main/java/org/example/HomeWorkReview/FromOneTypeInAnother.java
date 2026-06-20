@@ -13,5 +13,7 @@ public class FromOneTypeInAnother {
 
         short o = 2;
         int i = o;
+
+        int[] ha = new int[9];
     }
 }
