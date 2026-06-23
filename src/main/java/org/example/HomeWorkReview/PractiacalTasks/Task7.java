@@ -3,12 +3,21 @@ package org.example.HomeWorkReview.PractiacalTasks;
 import java.util.Scanner;
 
 public class Task7 {
-    static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int size = 0;
-        boolean cycle = true;
+    static Scanner scanner = new Scanner(System.in);
 
-        while (cycle) {
+    static void main(String[] args) {
+        int size = findingTheBigOfArray();
+
+        int[] array = new int[size];
+
+        int theSummeOfNumbers = fillingTheArrayAndCalculating(array);
+
+        System.out.println("Сума дорівнює " + theSummeOfNumbers);
+    }
+
+    public static int findingTheBigOfArray() {
+        int size = 0;
+        while (true) {
             System.out.println("Напиши скільки елементів: ");
             try {
                 size = scanner.nextInt();
@@ -16,36 +25,32 @@ public class Task7 {
                     System.out.println("Кількість елементів має бути більшою за 0!");
                     continue;
                 }
-                cycle = false;
+                break;
             } catch (Exception e) {
-                System.err.println("Помилка число незнайдено\n" +
-                        "Повторить спробу");
-
+                System.err.println("Помилка число незнайдено\nПовторить спробу");
                 scanner.nextLine();
             }
         }
+        return size;
+    }
 
-        int[] array = new int[size];
+    public static int fillingTheArrayAndCalculating(int[] array) {
         int theSummeOfNumbers = 0;
+        for (int i = 0; i < array.length; i++) {
 
-        for (
-                int i = 0;
-                i < array.length; i++) {
-            boolean cycleForNumber = true;
 
-            while (cycleForNumber) {
+            while (true) {
                 System.out.println("Номер " + (i + 1) + "\nНапиши повне число: ");
                 try {
                     array[i] = scanner.nextInt();
                     theSummeOfNumbers += array[i];
-                    cycleForNumber = false;
+                   break;
                 } catch (Exception e) {
                     System.err.println("Помилка! Це не ціле число. Спробуйте ще раз.");
                     scanner.nextLine();
                 }
             }
         }
-
-        System.out.println("Сума дорівнює " + theSummeOfNumbers);
+        return theSummeOfNumbers;
     }
 }
