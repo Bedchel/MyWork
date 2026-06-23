@@ -1,39 +1,43 @@
 package org.example.HomeWorkReview.PractiacalTasks;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Task2 {
-    // Додали public, щоб програма запускалася
-    public static void main(String[] args) {
-        // Створюємо масив потрібного розміру (на 3 комірки)
-        double[] numbers = new double[3];
+    static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        boolean cycle = true;
-        while (cycle) {
-            System.out.println("Напишіть 3 числа:");
-            try {
-                System.out.print("N1: ");
-                numbers[0] = scanner.nextDouble();
+        double[] numbers = new double[3];
 
-                System.out.print("N2: ");
-                numbers[1] = scanner.nextDouble();
-
-                System.out.print("N3: ");
-                numbers[2] = scanner.nextDouble();
-                cycle = false;
-            } catch (Exception e) {
-                System.err.println("Помилка числа незнайдено\n" +
-                        "Повторить спробу");
-            }
-        }
-        double biggestNumber = numbers[0];
-
-        for (int i = 1; i < numbers.length; i++) {
-            if (numbers[i] > biggestNumber) {
-                biggestNumber = numbers[i];
-            }
-        }
-
+        fillArray(numbers, scanner);
+        double biggestNumber = findBiggestNumber(numbers);
         System.out.println(STR."Найбільше число це \{biggestNumber}");
+    }
+
+    public static void fillArray(double[] array, Scanner scanner) {
+
+        while (true) {
+            System.out.println(STR."Напишіть \{array.length} числа:");
+            try {
+                for (int i = 0; i < array.length; i++) {
+                    System.out.print(STR."N\{i + 1}: ");
+                    array[i] = scanner.nextDouble();
+                }
+                break;
+            } catch (InputMismatchException e) {
+                System.err.println("Помилка! Числа не знайдено.\nПовторіть спробу");
+                scanner.nextLine();
+            }
+        }
+    }
+
+    public static double findBiggestNumber(double[] array) {
+        double biggestNumber = array[0];
+
+        for (int i = 1; i < array.length; i++) {
+            if (array[i] > biggestNumber) {
+                biggestNumber = array[i];
+            }
+        }
+        return biggestNumber;
     }
 }

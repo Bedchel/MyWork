@@ -1,44 +1,58 @@
 package org.example.HomeWorkReview.PractiacalTasks;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Task6 {
     static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int theNumber = 0;
-        boolean cycle = true;
-        while (cycle)
+        while (true)
             try {
                 System.out.println("Напишить повноціне число:");
                 theNumber = scanner.nextInt();
-                cycle = false;
-            } catch (Exception e) {
+                break;
+            } catch (InputMismatchException e) {
                 System.err.println("Помилка число незнайдено\n" +
                         "Повторить спробу");
             }
         System.out.println("1. Метод");
 
-        int tempNumber = Math.abs(theNumber);
+        System.out.println("1. Метод (Математичний):");
+        int result1 = reverseMath(theNumber);
+        System.out.println("Перевернуте число: " + result1);
+
+        System.out.println("2. Метод (StringBuilder):");
+        int result2 = reverseString(theNumber);
+        System.out.println("Перевернуте число: " + result2);
+    }
+
+    public static int reverseMath(int number) {
+        int tempNumber = Math.abs(number);
         int reversedNumber = 0;
+
         while (tempNumber > 0) {
             int lastDigit = tempNumber % 10;
             reversedNumber = reversedNumber * 10 + lastDigit;
             tempNumber /= 10;
         }
-        if (theNumber < 0) {
+
+        if (number < 0) {
             reversedNumber = -reversedNumber;
         }
-        System.out.println("Перевернуте число: " + reversedNumber); // Виведе: 4321
 
+        return reversedNumber;
+    }
 
-        System.out.println("2. Метод");
-
-        String numberAsString = String.valueOf(Math.abs(theNumber));
+    public static int reverseString(int number) {
+        String numberAsString = String.valueOf(Math.abs(number));
         String reversedString = new StringBuilder(numberAsString).reverse().toString();
-        int reversedNumberSecondMethode = Integer.parseInt(reversedString);
-        if (theNumber < 0) {
-            reversedNumberSecondMethode = -reversedNumberSecondMethode;
+        int reversedNumberSecondMethod = Integer.parseInt(reversedString);
+
+        if (number < 0) {
+            reversedNumberSecondMethod = -reversedNumberSecondMethod;
         }
-        System.out.println("Перевернуте число: " + reversedNumberSecondMethode); // Виведе: -4321
+
+        return reversedNumberSecondMethod;
     }
 }

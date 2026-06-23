@@ -1,12 +1,13 @@
 package org.example.HomeWorkReview.PractiacalTasks;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Task1 {
     static void main(String[] args) {
-        boolean cycle = true;
+
         Scanner scanner = new Scanner(System.in);
-        while (cycle) {
+        while (true) {
             System.out.println("Ведить будь яке число");
             try {
                 double number = scanner.nextDouble();
@@ -15,8 +16,8 @@ public class Task1 {
                 } else {
                     System.out.println("Це число непарне");
                 }
-                cycle = false;
-            } catch (Exception e) {
+                break;
+            } catch (InputMismatchException e) {
                 System.err.println("Помилка число незнайдено\n" +
                         "Повторить спробу");
             }

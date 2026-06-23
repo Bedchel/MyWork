@@ -1,5 +1,6 @@
 package org.example.HomeWorkReview.PractiacalTasks;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Task3 {
@@ -7,13 +8,12 @@ public class Task3 {
         Scanner scanner = new Scanner(System.in);
         int lastNumber = 0;
         int summeOfNumbers = 0;
-        boolean cycle = true;
-        while (cycle)
+        while (true)
             try {
                 System.out.println("До якого числа обчислювати?");
                 lastNumber = scanner.nextInt();
-                cycle = false;
-            } catch (Exception e) {
+                break;
+            } catch (InputMismatchException e) {
                 System.err.println("Помилка число незнайдено\n" +
                         "Повторить спробу");
             }

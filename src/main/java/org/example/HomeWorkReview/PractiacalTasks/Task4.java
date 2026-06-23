@@ -7,12 +7,11 @@ public class Task4 {
         Scanner scanner = new Scanner(System.in);
         int theNumber = 0;
         int amountOfZiffersInNumber = 0;
-        boolean cycle = true;
-        while (cycle)
+        while (true)
             try {
                 System.out.println("Напишить повноціне число:");
                 theNumber = scanner.nextInt();
-                cycle = false;
+                break;
             } catch (Exception e) {
                 System.err.println("Помилка число незнайдено\n" +
                         "Повторить спробу");
