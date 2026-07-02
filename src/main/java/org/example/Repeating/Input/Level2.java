@@ -7,7 +7,6 @@ import java.util.Scanner;
 public class Level2 {
     Scanner scanner = new Scanner(System.in);
     static Level2 level2 = new Level2();
-
     static void main() {
         String[] inputs = new String[level2.checkInput()];
         level2.fullTheArray(inputs);
@@ -18,8 +17,8 @@ public class Level2 {
         while (true) {
             try {
                 System.out.println("How many String?");
-                int input = level2.scanner.nextInt();
-                level2.scanner.nextLine();
+                int input = scanner.nextInt();
+                scanner.nextLine();
                 if (input <= 0) {
                     System.out.println("It must be over 0");
                     continue;
@@ -28,6 +27,8 @@ public class Level2 {
             } catch (InputMismatchException ime) {
                 System.out.println("Please full numbers and not double");
                 level2.scanner.nextLine();
+            } finally {
+                scanner.nextLine();
             }
         }
     }
