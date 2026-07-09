@@ -1,11 +1,11 @@
 package org.example.TerminalProject;
 
-import java.util.HashMap;
-import java.util.Objects;
+import org.example.TerminalProject.Service.FileService;
+
 import java.util.Scanner;
 
 public class Terminal {
-
+    FileService fileService = new FileService();
     Scanner scanner = new Scanner(System.in);
 
     static void main() {
@@ -18,13 +18,14 @@ public class Terminal {
     }
 
     String showInterface() {
-        return "\n Перше слово – це команда, а наступні – аргументи" +
+        return "Комманди:" +
                 "\n create - Створити новий файл" +
                 "\n mkdir - створити папку" +
                 "\n delete - Видалити файл" +
                 "\n find - Знайти файли з частиною назви" +
                 "\n ls - перегляд вмісту поточної папки" +
                 "\n cd - войти в папку" +
+                "\n sfc - показати контент файла" +
                 "\n exit - Зупинити процесс" +
                 "\n";
     }
@@ -34,6 +35,7 @@ public class Terminal {
         String name = scanner.nextLine();
         System.out.println("Напишить контент внутри");
         String contentInside = scanner.nextLine();
+        fileService.createFile(name, contentInside);
     }
 
     void createFolder() {
@@ -62,6 +64,12 @@ public class Terminal {
         String folderNameToGoIn = scanner.nextLine();
     }
 
+    void showFileContent() {
+        System.out.println("Напишить назву файла для показу контента:");
+        String nameForShowing = scanner.nextLine();
+        fileService.showContent(nameForShowing);
+    }
+
     void chooseTheMethod(String command) {
         switch (command.toLowerCase()) {
             case "create":
@@ -81,6 +89,9 @@ public class Terminal {
                 break;
             case "cd":
                 goInFolder();
+                break;
+            case "sfc":
+                showFileContent();
                 break;
             case "exit":
                 System.exit(0);
