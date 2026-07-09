@@ -11,7 +11,7 @@ public class AnaliticWeb {
     public final long THESMALLESTID = 1L;
     public static Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    static void main(String[] args) {
         AnaliticWeb analiticWeb = new AnaliticWeb();
         System.out.println("How many new users came?");
         analiticWeb.randomize(scanner.nextLong());

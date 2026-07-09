@@ -1,11 +1,10 @@
 package org.example.TerminalProject;
 
-import org.example.TerminalProject.Service.FileService;
+import org.example.TerminalProject.Service;
 
 import java.util.Scanner;
 
 public class Terminal {
-    FileService fileService = new FileService();
     Scanner scanner = new Scanner(System.in);
 
     static void main() {
@@ -46,7 +45,6 @@ public class Terminal {
         String name = scanner.nextLine();
         System.out.println("Напишить контент внутри");
         String contentInside = scanner.nextLine();
-        fileService.createFile(name, contentInside);
     }
 
     void createFolder() {
@@ -78,7 +76,6 @@ public class Terminal {
     void showFileContent() {
         System.out.println("Напишить назву файла для показу контента:");
         String nameForShowing = scanner.nextLine();
-        fileService.showContent(nameForShowing);
     }
 
     void chooseTheMethod(String command) {
@@ -106,6 +103,8 @@ public class Terminal {
                 break;
             case "exit":
                 System.exit(0);
+            default:
+                System.out.println("Напишить комманду.");
         }
     }
 }
