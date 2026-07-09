@@ -34,6 +34,12 @@ public class Folder {
     }
 
     public boolean removeElement(String name) {
-        contentFolder.remove();
+        for (File file : contentFolder) {
+            if (file.name().equals(name)) {
+                contentFolder.remove(file);
+                return true;
+            }
+        }
+        return false;
     }
 }

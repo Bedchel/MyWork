@@ -1,10 +1,14 @@
 package org.example.TerminalProject;
 
 import org.example.TerminalProject.Model.File;
+import org.example.TerminalProject.Model.Folder;
 
 import java.util.List;
 
-public class FileService implements Service{
+public class FileService implements Service {
+    Folder root;
+    Folder currentDirectory;
+
     @Override
     public List<String> ls() {
         return List.of();
