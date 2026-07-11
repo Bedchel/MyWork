@@ -5,39 +5,13 @@ import org.example.TerminalProject.Service;
 import java.util.Scanner;
 
 public class Terminal {
+
     Scanner scanner = new Scanner(System.in);
+    Controller controller = new Controller(new FileService());
 
     static void main() {
         Terminal terminal = new Terminal();
-        while (true) {
-            System.out.println(terminal.showInterface());
-            String command = terminal.scanner.nextLine();
-            terminal.chooseTheMethod(command);
-        }
-    }
-
-    String showInterface() {
-        return """
-                
-                Комманди:\
-                
-                 create - Створити новий файл\
-                
-                 mkdir - створити папку\
-                
-                 delete - Видалити файл\
-                
-                 find - Знайти файли з частиною назви\
-                
-                 ls - перегляд вмісту поточної папки\
-                
-                 cd - войти в папку\
-                
-                 sfc - показати контент файла\
-                
-                 exit - Зупинити процесс\
-                
-                """;
+        terminal.controller.start();
     }
 
     void createFile() {
@@ -76,35 +50,5 @@ public class Terminal {
     void showFileContent() {
         System.out.println("Напишить назву файла для показу контента:");
         String nameForShowing = scanner.nextLine();
-    }
-
-    void chooseTheMethod(String command) {
-        switch (command.toLowerCase()) {
-            case "create":
-                createFile();
-                break;
-            case "mkdir":
-                createFolder();
-                break;
-            case "delete":
-                deleteFile();
-                break;
-            case "find":
-                find();
-                break;
-            case "ls":
-                showFolderContent();
-                break;
-            case "cd":
-                goInFolder();
-                break;
-            case "sfc":
-                showFileContent();
-                break;
-            case "exit":
-                System.exit(0);
-            default:
-                System.out.println("Напишить комманду.");
-        }
     }
 }
