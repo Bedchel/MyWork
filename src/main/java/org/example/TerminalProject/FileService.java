@@ -9,6 +9,12 @@ public class FileService implements Service {
     Folder root;
     Folder currentDirectory;
 
+
+    public FileService() {
+        root = new Folder("C:/", null);
+        currentDirectory = root;
+    }
+
     @Override
     public List<String> ls() {
         return List.of();
@@ -26,7 +32,8 @@ public class FileService implements Service {
 
     @Override
     public File create(String name, String content) {
-        return null;
+        File file = new File(name, content);
+        return file;
     }
 
     @Override
@@ -37,5 +44,21 @@ public class FileService implements Service {
     @Override
     public List<File> findFile(String substring) {
         return List.of();
+    }
+
+    public Folder getRoot() {
+        return root;
+    }
+
+    public void setRoot(Folder root) {
+        this.root = root;
+    }
+
+    public Folder getCurrentDirectory() {
+        return currentDirectory;
+    }
+
+    public void setCurrentDirectory(Folder currentDirectory) {
+        this.currentDirectory = currentDirectory;
     }
 }

@@ -1,5 +1,6 @@
 package org.example.TerminalProject.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Folder {
@@ -8,6 +9,13 @@ public class Folder {
 
     private List<Folder> subFolder;
     private List<File> contentFolder;
+
+    public Folder(String name, Folder parent) {
+        this.name = name;
+        this.parent = parent;
+        List<Folder> subFolder = new ArrayList<>();
+        List<File> contentFolder = new ArrayList<>();
+    }
 
     public String getName() {
         return name;

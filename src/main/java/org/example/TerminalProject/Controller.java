@@ -14,7 +14,6 @@ public class Controller {
     }
 
     public void start() {
-
         System.out.println(showInterface());
         while (true) {
             String command = scanner.nextLine();
@@ -49,6 +48,7 @@ public class Controller {
     private void handleCommand(String input) {
         switch (input.toLowerCase()) {
             case "create":
+                createFile();
                 break;
             case "mkdir":
                 break;
@@ -77,8 +77,12 @@ public class Controller {
         return false;
     }
 
-    public File createFile(String name, String content) {
-        return null;
+    public File createFile() {
+        System.out.println("Напишить назву:");
+        String name = scanner.nextLine();
+        System.out.println("Напишить контент внутри");
+        String contentInside = scanner.nextLine();
+        return service.create(name, contentInside);
     }
 
     public boolean deleteFile(String name) {
