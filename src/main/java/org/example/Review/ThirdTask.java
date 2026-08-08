@@ -2,7 +2,7 @@ package org.example.Review;
 
 public class ThirdTask {
     static void main() {
-        testMethod();//Нічого
+        System.out.println(testMethod());//3
     }
     public static int testMethod() {
         try {
