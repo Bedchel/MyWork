@@ -31,9 +31,9 @@ public class Task {
 
         Set<String> correctedList = new HashSet<>(nameList);
         System.out.println(correctedList);
+        System.out.println(" ");
 
         System.out.println("Stream Api");
-
         System.out.println("Task one");
         List<Integer> listApi = List.of(2, 5, 7, 9, 6, -5, -8, 0);
         List<Integer> list2Api = listApi.stream().filter(s -> s % 2 == 0).toList();
@@ -45,13 +45,12 @@ public class Task {
         List<String> sentenceApi = List.of("ed", "9", "fo");
 
         List<Integer> numberApi = new ArrayList<>();
-        sentenceApi.stream().forEach(s -> numberApi.add(s.length()));
+        sentenceApi.forEach(s -> numberApi.add(s.length()));
         System.out.println(numberApi);
 
         System.out.println("Task three");
         List<String> nameListApi = List.of("Ich", "Minchon", "I", "Ich", "Ich", "Alexey", "Alexey", "i");
 
-        List<String> correctedListApi = List.of(nameListApi.stream().distinct().toString());
-        correctedListApi.forEach(System.out::println);
+        nameListApi.stream().distinct().forEach(name -> System.out.print(name + ", "));
     }
 }
