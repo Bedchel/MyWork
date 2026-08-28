@@ -22,14 +22,21 @@ public class TaskTwo {
         groupedByDeportament.forEach((deportament, workers) ->
                 System.out.println("Департамент " + deportament + ": " + workers));
 
+
+        System.out.println("\n--- Середня зарплата по департаментах ---");
         Map<String, Double> avgSalaryByDept = workerList.stream()
                 .collect(Collectors.groupingBy(
                         Worker::deportament,
                         Collectors.averagingDouble(Worker::salary)
                 ));
 
-        System.out.println("\n--- Середня зарплата по департаментах ---");
+
         avgSalaryByDept.forEach((dept, avgSalary) ->
                 System.out.println("Департамент " + dept + ": " + avgSalary));
+
+        System.out.println("\n--- Середня зарплата по департаментах більше 3000 ---");
+        avgSalaryByDept.values().stream().filter(s -> s > 3000).forEach(salary ->
+                System.out.println("Департамент: " + salary));
+
     }
 }
