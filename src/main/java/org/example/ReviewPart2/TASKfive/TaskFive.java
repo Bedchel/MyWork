@@ -5,5 +5,6 @@ public class TaskFive {
 
         TriFunction<Double, Double, Double, Double> triFunction = (h, l, w) -> h * l * w;
         System.out.println(triFunction.IDKWhatToDo(15.0, 2.0, 6.0));
+
     }
 }
