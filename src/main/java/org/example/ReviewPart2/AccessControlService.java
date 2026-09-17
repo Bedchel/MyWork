@@ -6,7 +6,7 @@ import java.util.stream.Collectors;
 public class AccessControlService {
     static void main() {
         Role role1 = new Role("Normal", Set.of(Permission.READ));
-        Role role2 = new Role("Qualifiziert", Set.of(Permission.READ, Permission.WRITE));
+        Role role2 = new Role("Qualifiziert", Set.of(Permission.READ, Permission.WRITE, Permission.DELETE));
         Role role3 = new Role("Admin", Set.of(Permission.READ, Permission.WRITE, Permission.DELETE, Permission.ADMIN));
         Role role4 = new Role("Boss", Set.of(Permission.READ, Permission.WRITE, Permission.DELETE, Permission.ADMIN));
         User2 user = new User2(UUID.randomUUID(), "Kwin");
@@ -17,7 +17,6 @@ public class AccessControlService {
         user3.addRole(role3);
         User2 user4 = new User2(UUID.randomUUID(), "Minchon");
         user4.addRole(role4);
-
     }
 
     enum Permission {READ, WRITE, DELETE, ADMIN}
@@ -72,4 +71,10 @@ public class AccessControlService {
                     '}';
         }
     }
+
+    public void assignRole(UUID userId, Role role) {
+
+    }
+
+
 }
